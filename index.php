@@ -23,8 +23,12 @@ function arrayInTwoFiles($array)
                 break;
         }
     }
+
+//    get_file_content('positive.txt');
     return true;
 }
+echo ('Положительные элементы массима  '.file_get_contents('positive.txt'));
 
+echo('   Отрицательные  элементы массима  '.file_get_contents('negative.txt'));
 
 ?>
