@@ -15,7 +15,6 @@ function arrayCountAliquot($array)
         If (($value % 5) == 0) {
             $CountAliquot++;
         }
-        unset($value);
         return $CountAliquot;
     }
 
