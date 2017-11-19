@@ -1,23 +1,21 @@
 <?php
 //Задача 2: Реализуйте функцию вывода положительных значений массива кратных «5».
-$array = [12, 234, 10, 45, 9, 3, 7, 1, 15, 0];
-
-//foreach ($array as $value) {
-//    If (($value % 5) == 0) {
-//        echo "$value</br>";
-//    }
-//}
-echo arrayCountAliquot($array);
-function arrayCountAliquot($array)
-{
-    $CountAliquot = 0;
-    foreach ($array as $value) {
-        If (($value % 5) == 0) {
-            $CountAliquot++;
-        }
-        return $CountAliquot;
-    }
-
+$array = [12, 234, -10, 10, 45, 46, 9, 3, 7, 1, 15, 0];
+echo "Исходный массив:</br>";
+foreach ($array as $value) {
+    echo "$value</br>";
 }
+echo "Значения кратные 5:</br>";
+arrayCountAliquot($array, 5);
+function arrayCountAliquot($array, $multiplicity)
+{
+    foreach ($array as $value) {
+        If ((($value % $multiplicity) == 0) and ($value >= 0)) {
+            echo "$value</br>";
+        }
+    }
+    return true;
+}
+
 
 ?>
