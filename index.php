@@ -21,7 +21,7 @@
 //echo(file_get_contents("file.txt"));
 $fileName = "example.txt";
 $fileDate = "<p>Мой текст</p>";
-$rights = "a+";
+$rights = "a+"; 
 /**
  * Put date to some file with some rights
  * @param string $fileName
