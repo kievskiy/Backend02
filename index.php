@@ -27,8 +27,9 @@ function arrayInTwoFiles($array)
 //    get_file_content('positive.txt');
     return true;
 }
-echo ('Положительные элементы массима  '.file_get_contents('positive.txt'));
 
-echo('   Отрицательные  элементы массима  '.file_get_contents('negative.txt'));
+echo('Положительные элементы массима  ' . file_get_contents('positive.txt'));
+
+echo('   Отрицательные  элементы массима  ' . file_get_contents('negative.txt'));
 
 ?>
