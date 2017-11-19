@@ -23,8 +23,6 @@ function arrayInTwoFiles($array)
                 break;
         }
     }
-
-//    get_file_content('positive.txt');
     return true;
 }
 
