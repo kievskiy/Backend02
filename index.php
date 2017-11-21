@@ -1,45 +1,43 @@
 <?php
-//$array = [2, 124, 12, 67, 'Number'=>58, 11, 12, 15, 11, 12, 23, 45];
-//asort($array, SORT_NUMERIC);
-//If (array_key_exists('Number', $array)) {
-//    echo 'Массив содержит ключ Number';
-//};
-//var_dump(array_key_exists('Number', $array));
-//$result=array_unique($array);
-//var_dump($array);
-//echo '</br>';
-//var_dump($result);
-//echo '</br>';
-//var_dump(array_values($result));
-//$text = "Текст  \n";
+$arrayCount = [1,2,3,4,5];
 
-//$fr = fopen("file.txt","w");
-//fwrite($fr,$text);
-//fclose($fr);
-//file_put_contents("file.txt","<p>Текст1</p>",FILE_APPEND | LOCK_EX);
-//file_put_contents("file1.txt","Текст2  ",FILE_APPEND | LOCK_EX);
-//echo(file_get_contents("file.txt"));
-$fileName = "example.txt";
-$fileDate = "<p>Мой текст</p>";
-$rights = "a+"; 
-/**
- * Put date to some file with some rights
- * @param string $fileName
- * @param $fileDate
- * @param string (optional) $rights
- * @return bool
- */
-function filePutContent($fileName, $fileDate, $rights = "w")
-{
-    $fp = fopen($fileName, $rights);
-    fwrite($fp, $fileDate);
-    fclose($fp);
-    return true;
-}
+$userFunc = function ($result) {
+    // $result исходные данные которые мы передали при вызове call_user_func
 
-if (filePutContent($fileName, $fileDate/*,$rights*/)) {
-    echo 'Save complite';
-} else {
-    echo "Save failed";
+    //Увеличения исходных данных на 1 и запись с новым клюючем
+    foreach ($result['current'] as $val) {
+        $result['new'][] = $val + 1;
+    }
+
+    return $result;
 };
+
+// Вызывает нашу основую функцию. И передаем в нее два параметра:
+// Исходный массив с данными и пользовательскую функцию для их обработки.
+$response = myFunction($arrayCount, $userFunc);
+
+echo "<pre>";
+var_dump($response);
+echo "</pre>";
+
+/**
+ *
+ * @param $arrayCount Исходный массив
+ * @param $callback Функция для дополнтительной обработки исходного массива
+ * @return mixed
+ */
+ function myFunction($arrayCount, $callback) {
+        // Записывает исходный массив в переменную $result['current']
+        $result['current'] = $arrayCount;
+
+     //Проверяем является ли переданный параметр функцией.
+     if (is_callable($callback)) {
+         //Вызываем переданную пользовательскую функцию и возвращаем обработанные данные
+         $result = call_user_func($callback, $result);
+     }
+
+     //Возвращаем финальный результат.
+
+     return $result;
+ }
 ?>
